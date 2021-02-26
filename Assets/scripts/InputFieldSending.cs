@@ -3,19 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InputFieldSending : MonoBehaviour
+public class LoggingIn
 {
-    class LoggingIn
-    {
-        string username;
-        string password;
+    private string username;
+    private string password;
 
-        public LoggingIn(string username, string password)
+    public LoggingIn(string username, string password)
+    {
+        this.username = username;
+        this.password = password;
+    }
+    public string Username
+    {
+        get
         {
-            this.username = username;
-            this.password = password;
+            return this.username;
         }
     }
+    public string Password
+    {
+        get
+        {
+            return this.password;
+        }
+    }
+}
+
+public class InputFieldSending : MonoBehaviour
+{
+    
 
     public InputField UsernameField;
     public InputField PasswordField;
@@ -29,7 +45,9 @@ public class InputFieldSending : MonoBehaviour
             li = new LoggingIn(UsernameField.text, PasswordField.text);
             UsernameField.text = "";
             PasswordField.text = "";
+            Debug.Log(li.Username + " " + li.Password);
         }
+
 
     }
 
