@@ -5,17 +5,32 @@ using UnityEngine.UI;
 
 public class InputFieldSending : MonoBehaviour
 {
+    class LoggingIn
+    {
+        string username;
+        string password;
+
+        public LoggingIn(string username, string password)
+        {
+            this.username = username;
+            this.password = password;
+        }
+    }
 
     public InputField UsernameField;
     public InputField PasswordField;
 
+    LoggingIn li;
+
     public void onClick()
     {
-        Debug.Log("Sent Username == " + UsernameField.text);
-        Debug.Log("Sent Password == " + PasswordField.text);
+        if(UsernameField.text != "" && PasswordField.text != "")
+        {
+            li = new LoggingIn(UsernameField.text, PasswordField.text);
+            UsernameField.text = "";
+            PasswordField.text = "";
+        }
 
-        UsernameField.text = "";
-        PasswordField.text = "";
     }
 
     void Update()
